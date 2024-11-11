@@ -1,0 +1,10 @@
+node_modules
+config/*.env
+log
+coverage
+.DS_Store
+.adminjs
+public/temp
+public/pdfs
+.cache
+dump.rdb
