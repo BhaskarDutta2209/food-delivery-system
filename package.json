@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "env-cmd -f ./config/test.env npx sequelize-cli db:drop && env-cmd -f ./config/test.env npx sequelize-cli db:create && env-cmd -f ./config/test.env npx sequelize-cli db:migrate && env-cmd -f ./config/test.env npx sequelize-cli db:seed:all",
+    "test": "env-cmd -f ./config/test.env mocha --config ./config/.mocharc.cjs",
     "dev": "env-cmd -f ./config/development.env nodemon src/index.js",
     "start_production": "env-cmd -f ./config/production.env node src/index.js",
     "db:create": "env-cmd -f ./config/$ENV.env npx sequelize-cli db:create",
@@ -42,8 +43,12 @@
     "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "chai": "^5.1.2",
     "env-cmd": "^10.1.0",
+    "mocha": "^10.8.2",
     "nodemon": "^3.1.7",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "supertest": "^7.0.0"
   }
 }
