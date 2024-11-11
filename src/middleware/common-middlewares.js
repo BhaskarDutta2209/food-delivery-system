@@ -1,4 +1,4 @@
-import { static as staticExpress } from 'express';
+import { json, static as staticExpress } from 'express';
 import addRequestId from 'express-request-id';
 import logger from '../../config/logger.js';
 import limiter from '../../config/rate-limiter.js';
@@ -16,6 +16,7 @@ i18n.configure({
 });
 
 export default [
+  json(),
   staticExpress('public'),
   addRequestId({ setHeader: false }),
   process.env.NODE_ENV != 'test' ? logger : (req, res, next) => next(), // Disable logging in test environment,

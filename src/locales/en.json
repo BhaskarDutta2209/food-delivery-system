@@ -1,0 +1,30 @@
+{
+	"errors": {
+		"validation": {
+			"customer": {
+				"first_name": {
+					"must_be_string": "First name must be a string!",
+					"required": "First name is required!"
+				},
+				"last_name": {
+					"required": "Last name is required!",
+					"must_be_string": "Last name must be a string!"
+				},
+				"email": {
+					"required": "Email is required!",
+					"invalid": "Email is invalid!"
+				},
+				"password": {
+					"required": "Password is required!",
+					"must_be_string": "Password must be a string!",
+					"min_length": "Password must be at least 8 characters long!",
+					"invalid": "Password is invalid!"
+				}
+			}
+		},
+		"customer": {
+			"email_already_exists": "errors.customer.email_already_exists",
+			"invalid_credentials": "errors.customer.invalid_credentials"
+		}
+	}
+}

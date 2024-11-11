@@ -4,6 +4,8 @@ import logger from '../../config/winstonLogger.js';
 const errorHandler = (err, req, res, next) => {
   logger.error(err);
 
+  console.log(err);
+
   const errorName = err.name;
 
   switch (errorName) {
