@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../../../src/app.js';
 
 export const logIn = async (email) => {
-  const response = await request(app).post('/api/customer/sessions/sign_in').send({
+  const response = await request(app).post('/api/restaurant/sessions/sign_in').send({
     email: email,
     password: 'Password1!',
   });
@@ -12,7 +12,7 @@ export const logIn = async (email) => {
 
 export const logOut = async (accessToken, refreshToken) => {
   await request(app)
-    .delete('/api/restaurants/sessions/sign_out')
+    .delete('/api/restaurant/sessions/sign_out')
     .set('Cookie', [`refresh_token=${refreshToken}`])
     .set('Authorization', 'Bearer ' + accessToken);
 };
