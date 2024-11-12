@@ -20,11 +20,35 @@
 					"min_length": "Password must be at least 8 characters long!",
 					"invalid": "Password is invalid!"
 				}
+			},
+			"restaurant": {
+				"name": {
+					"required": "errors.validation.restaurant.name.required",
+					"must_be_string": "errors.validation.restaurant.name.must_be_string"
+				},
+				"address": {
+					"required": "errors.validation.restaurant.address.required",
+					"must_be_string": "errors.validation.restaurant.address.must_be_string",
+					"address": "errors.validation.restaurant.address.address"
+				},
+				"email": {
+					"required": "errors.validation.restaurant.email.required",
+					"invalid": "errors.validation.restaurant.email.invalid"
+				},
+				"password": {
+					"required": "errors.validation.restaurant.password.required",
+					"must_be_string": "errors.validation.restaurant.password.must_be_string",
+					"min_length": "errors.validation.restaurant.password.min_length",
+					"invalid": "errors.validation.restaurant.password.invalid"
+				}
 			}
 		},
 		"customer": {
 			"email_already_exists": "errors.customer.email_already_exists",
 			"invalid_credentials": "errors.customer.invalid_credentials"
+		},
+		"restaurant": {
+			"invalid_credentials": "errors.restaurant.invalid_credentials"
 		}
 	}
 }
