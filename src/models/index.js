@@ -6,6 +6,7 @@ import configSetup from '../../config/database.js';
 import { RefreshToken } from './RefreshToken.js';
 import { Customer } from './Customer.js';
 import { Restaurant } from './Restaurant.js';
+import { Item } from './Item.js';
 
 // Initialize Sequelize
 const env = process.env.NODE_ENV || 'development';
@@ -28,6 +29,7 @@ const models = {
   RefreshToken: RefreshToken(sequelize, Sequelize.DataTypes),
   Customer: Customer(sequelize, Sequelize.DataTypes),
   Restaurant: Restaurant(sequelize, Sequelize.DataTypes),
+  Item: Item(sequelize, Sequelize.DataTypes),
 };
 
 // Set up associations if needed

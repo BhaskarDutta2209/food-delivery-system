@@ -41,6 +41,28 @@
 					"min_length": "errors.validation.restaurant.password.min_length",
 					"invalid": "errors.validation.restaurant.password.invalid"
 				}
+			},
+			"item": {
+				"name": {
+					"required": "errors.validation.item.name.required",
+					"must_be_string": "errors.validation.item.name.must_be_string"
+				},
+				"description": {
+					"required": "errors.validation.item.description.required",
+					"must_be_string": "errors.validation.item.description.must_be_string"
+				},
+				"price": {
+					"required": "errors.validation.item.price.required",
+					"must_be_float": "errors.validation.item.price.must_be_float"
+				},
+				"type": {
+					"required": "errors.validation.item.type.required",
+					"must_be_string": "errors.validation.item.type.must_be_string",
+					"invalid": "errors.validation.item.type.invalid"
+				},
+				"id": {
+					"required": "errors.validation.item.id.required"
+				}
 			}
 		},
 		"customer": {
@@ -48,7 +70,14 @@
 			"invalid_credentials": "errors.customer.invalid_credentials"
 		},
 		"restaurant": {
-			"invalid_credentials": "errors.restaurant.invalid_credentials"
+			"invalid_credentials": "errors.restaurant.invalid_credentials",
+			"item_not_found": "errors.restaurant.item_not_found"
+		},
+		"admin": {
+			"properties": {
+				"invalid_property_id": "errors.admin.properties.invalid_property_id"
+			}
 		}
-	}
+	},
+	"errors.": "errors."
 }
