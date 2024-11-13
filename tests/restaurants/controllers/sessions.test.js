@@ -8,14 +8,6 @@ import { logIn } from '../utils/sessions.js';
 
 const { Restaurant } = db;
 
-before(async() => {
-  // Make a call to the app to ensure the app has started
-  await request(app).get('/api/restaurant/health');
-  
-  // Wait for 5 seconds to ensure the app has started
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-});
-
 beforeEach(async () => {
   await Restaurant.truncate({ cascade: true, force: true });
 });

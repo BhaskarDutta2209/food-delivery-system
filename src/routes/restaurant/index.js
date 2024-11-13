@@ -1,5 +1,6 @@
 import sessionsRouter from './sessions.routes.js';
 import profileRouter from './profile.routes.js';
+import itemsRouter from './items.routes.js';
 
 export default function (app) {
   app.get('/api/restaurant/health', (_req, res) =>
@@ -8,4 +9,5 @@ export default function (app) {
 
   app.use('/api/restaurant/sessions', sessionsRouter);
   app.use('/api/restaurant/profile', profileRouter);
+  app.use('/api/restaurant/items', itemsRouter);
 }

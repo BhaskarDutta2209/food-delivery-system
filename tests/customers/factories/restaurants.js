@@ -12,4 +12,4 @@ export const basicRestaurant = async() => {
   });
 
   return restaurant;
-}
+};

@@ -20,6 +20,11 @@ const Restaurant = (sequelize, DataTypes) => {
         },
         as: 'refreshTokens'
       });
+
+      this.hasMany(models.Item, {
+        foreignKey: 'restaurant_id',
+        as: 'items'
+      });
     }
 
     static async findWithRefreshToken(refreshToken) {
