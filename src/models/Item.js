@@ -16,6 +16,7 @@ const Item = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Restaurant, { foreignKey: 'restaurant_id', constraints: false, as: 'restaurant' });
+      this.belongsToMany(models.Order, { through: models.OrderItem, foreignKey: 'item_id', as: 'orders' });
     }
   }
   Item.init({

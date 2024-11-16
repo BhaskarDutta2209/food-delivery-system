@@ -20,6 +20,10 @@ const Customer = (sequelize, DataTypes) => {
         },
         as: 'refreshTokens'
       });
+      this.hasMany(models.Order, {
+        foreignKey: 'customer_id',
+        as: 'orders'
+      });
     }
 
     static async findWithRefreshToken(refreshToken) {

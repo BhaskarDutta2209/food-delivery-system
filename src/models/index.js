@@ -7,6 +7,8 @@ import { RefreshToken } from './RefreshToken.js';
 import { Customer } from './Customer.js';
 import { Restaurant } from './Restaurant.js';
 import { Item } from './Item.js';
+import { Order } from './Order.js';
+import { OrderItem } from './OrderItem.js';
 
 // Initialize Sequelize
 const env = process.env.NODE_ENV || 'development';
@@ -30,6 +32,8 @@ const models = {
   Customer: Customer(sequelize, Sequelize.DataTypes),
   Restaurant: Restaurant(sequelize, Sequelize.DataTypes),
   Item: Item(sequelize, Sequelize.DataTypes),
+  Order: Order(sequelize, Sequelize.DataTypes),
+  OrderItem: OrderItem(sequelize, Sequelize.DataTypes),
 };
 
 // Set up associations if needed
