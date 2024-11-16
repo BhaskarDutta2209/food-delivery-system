@@ -4,8 +4,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import jwtConfig from '../../config/jwt.js';
 
-const Customer = (sequelize, DataTypes) => {
-  class Customer extends Model {
+const Restaurant = (sequelize, DataTypes) => {
+  class Restaurant extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -16,31 +16,36 @@ const Customer = (sequelize, DataTypes) => {
         foreignKey: 'resource_id',
         constraints: false,
         scope: {
-          resource_type: 'customer'
+          resource_type: 'restaurant'
         },
         as: 'refreshTokens'
       });
+
+      this.hasMany(models.Item, {
+        foreignKey: 'restaurant_id',
+        as: 'items'
+      });
       this.hasMany(models.Order, {
-        foreignKey: 'customer_id',
+        foreignKey: 'restaurant_id',
         as: 'orders'
       });
     }
 
     static async findWithRefreshToken(refreshToken) {
       return (
-        await Customer.findAll({
+        await Restaurant.findAll({
           where: { '$refreshTokens.token$': refreshToken },
           include: ['refreshTokens'],
         })
-      )[0]
+      )[0];
     }
 
     tokenPayload() {
       return {
         id: this.id,
         email: this.email,
-        type: 'customer'
-      };
+        type: 'restaurant'
+      }
     }
 
     generateAccessToken() {
@@ -76,32 +81,28 @@ const Customer = (sequelize, DataTypes) => {
         where: {
           token,
           resource_id: this.id,
-          resource_type: 'customer'
+          resource_type: 'restaurant'
         }
       });
     }
   }
-  Customer.init({
+  Restaurant.init({
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+      primaryKey: true
     },
-    first_name: {
+    name: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true,
-      },
+        isEmail: true
+      }
     },
     password: {
       type: DataTypes.STRING,
@@ -110,17 +111,20 @@ const Customer = (sequelize, DataTypes) => {
         this.setDataValue('password', bcrypt.hashSync(value, 10));
       }
     },
+    address: {
+      type: DataTypes.STRING(500),
+    },
     active: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: true
     }
   }, {
     sequelize,
     underscored: true,
     paranoid: true,
-    modelName: 'Customer',
+    modelName: 'Restaurant',
   });
-  return Customer;
+  return Restaurant;
 };
 
-export { Customer };
+export { Restaurant };

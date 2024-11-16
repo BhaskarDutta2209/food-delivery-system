@@ -3,6 +3,7 @@ import { Model } from 'sequelize';
 
 const REFRESH_TOKEN_RESOURCE_TYPES = {
   CUSTOMER: 'customer',
+  RESTAURANT: 'restaurant',
 }
 
 const RefreshToken = (sequelize, DataTypes) => {
@@ -14,6 +15,7 @@ const RefreshToken = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Customer, { foreignKey: 'resource_id', constraints: false, as: 'customer' });
+      this.belongsTo(models.Restaurant, { foreignKey: 'resource_id', constraints: false, as: 'restaurant' });
     }
   }
   RefreshToken.init({
