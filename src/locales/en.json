@@ -63,6 +63,27 @@
 				"id": {
 					"required": "errors.validation.item.id.required"
 				}
+			},
+			"order": {
+				"items": {
+					"must_be_array": "errors.validation.order.items.must_be_array",
+					"required": "errors.validation.order.items.required",
+					"id": {
+						"invalid": "errors.validation.order.items.id.invalid",
+						"required": "errors.validation.order.items.id.required"
+					},
+					"count": {
+						"invalid": "errors.validation.order.items.count.invalid"
+					}
+				},
+				"id": {
+					"required": "errors.validation.order.id.required",
+					"invalid": "errors.validation.order.id.invalid"
+				},
+				"status": {
+					"must_be_string": "errors.validation.order.status.must_be_string",
+					"invalid": "errors.validation.order.status.invalid"
+				}
 			}
 		},
 		"customer": {

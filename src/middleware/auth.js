@@ -16,7 +16,7 @@ passport.use(new JwtStrategy(opts, async (req, jwt_payload, done) => {
   if (loggedOutAccessToken) return done(null, null);
   
   if(jwt_payload.type == 'customer') {
-    if(!req.baseUrl.startsWith('/api/customer/')) return done(null, false);
+    if(!req.baseUrl.startsWith('/api/customer')) return done(null, false);
     Customer.findByPk(jwt_payload.id).then(customer => {
       if(customer) {
         const requestParams = {};
@@ -32,7 +32,7 @@ passport.use(new JwtStrategy(opts, async (req, jwt_payload, done) => {
       return done(error, false);
     });
   } else if(jwt_payload.type == 'restaurant') {
-    if(!req.baseUrl.startsWith('/api/restaurant/')) return done(null, false);
+    if(!req.baseUrl.startsWith('/api/restaurant')) return done(null, false);
     Restaurant.findByPk(jwt_payload.id).then(restaurant => {
       if(restaurant) {
         const requestParams = {};

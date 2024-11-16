@@ -2,7 +2,7 @@ import request from 'supertest';
 import { expect } from 'chai';
 import app from '../../../src/app.js';
 import db from '../../../src/models/index.js';
-import { itemWithCustomName, nonVegItem, vegItem } from '../factories/items.js';
+import { itemWithCustomName, nonVegItem, vegItem, vegItem } from '../factories/items.js';
 import { basicRestaurant } from '../factories/restaurants.js';
 
 const { Item } = db;
@@ -68,6 +68,17 @@ describe('Customer Items', () => {
       expect(response.status).to.equal(200);
       expect(response.body.items).to.have.length(1);
       expect(response.body.items[0].id).to.equal(veg.id);
+    });
+
+    it('should return data based on two filters', async() => {
+      const restaurant = await basicRestaurant();
+      const item1 = await vegItem(restaurant, 100)
+      const item2 = await nonVegItem(restaurant, 200);
+
+      const response = await request(app).get('/api/customer/items?onlyVeg=true&min_price=150');
+
+      expect(response.status).to.equal(200);
+      expect(response.body.items).to.have.length(0);
     });
   });
 });
