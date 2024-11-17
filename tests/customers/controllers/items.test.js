@@ -2,7 +2,7 @@ import request from 'supertest';
 import { expect } from 'chai';
 import app from '../../../src/app.js';
 import db from '../../../src/models/index.js';
-import { itemWithCustomName, nonVegItem, vegItem, vegItem } from '../factories/items.js';
+import { itemWithCustomName, nonVegItem, vegItem } from '../factories/items.js';
 import { basicRestaurant } from '../factories/restaurants.js';
 
 const { Item } = db;
